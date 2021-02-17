@@ -21,6 +21,7 @@ class ConversoresGradosTest {
 	
 
 	@Test
+	
 	void testDeGradosARadianes() {
 		assertEquals(Math.PI/6, Utilidades.deGradosARadianes(30, 0, 0), ERROR);
 		assertEquals(Math.PI/4, Utilidades.deGradosARadianes(45, 0, 0), ERROR);
@@ -29,12 +30,16 @@ class ConversoresGradosTest {
 
 	@Test
 	void testDeRadianesAGrados() {
-		Assertions.assertArrayEquals(angulo4, Utilidades.deRadianesAGrados(Math.PI/6));
-		Assertions.assertArrayEquals(angulo5, Utilidades.deRadianesAGrados(Math.PI/4));
 		double radianes1= Utilidades.deGradosARadianes(angulo1[0], angulo1[1], angulo1[2]);
 		double radianes2= Utilidades.deGradosARadianes(angulo2[0], angulo2[1], angulo2[2]);
-		Assertions.assertArrayEquals(angulo1, Utilidades.deRadianesAGrados(radianes1));
-		Assertions.assertArrayEquals(angulo2, Utilidades.deRadianesAGrados(radianes2));
+		assertAll("De Radianaes a grados",
+				()-> Assertions.assertArrayEquals(angulo4, Utilidades.deRadianesAGrados(Math.PI/6)),
+				()-> Assertions.assertArrayEquals(angulo5, Utilidades.deRadianesAGrados(Math.PI/4)),
+				()-> Assertions.assertArrayEquals(angulo1, Utilidades.deRadianesAGrados(radianes1)),
+				()-> Assertions.assertArrayEquals(angulo2, Utilidades.deRadianesAGrados(radianes2))
+				);
+		
+		
 	}
 
 }
